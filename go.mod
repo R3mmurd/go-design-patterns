@@ -1,3 +1,3 @@
-module github.com/R3mmurd/design-patterns-go
+module github.com/R3mmurd/go-design-patterns
 
 go 1.17
