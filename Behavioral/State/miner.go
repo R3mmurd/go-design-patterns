@@ -63,3 +63,22 @@ func (md *MinerDrinking) Handle() {
 func (md *MinerDrinking) Exit() {
 	fmt.Println("Yeah! I quenched my thirst!")
 }
+
+func newMiner(energy, requiredEnergy, recoveredEnergy int) *Miner {
+	miner := &Miner{
+		Energy: energy,
+	}
+	miner.states = map[string]State{
+		"working": &MinerWorking{
+			context:        miner,
+			requiredEnergy: requiredEnergy,
+		},
+		"drinking": &MinerDrinking{
+			context:         miner,
+			recoveredEnergy: recoveredEnergy,
+		},
+	}
+	miner.currentState = "working"
+
+	return miner
+}

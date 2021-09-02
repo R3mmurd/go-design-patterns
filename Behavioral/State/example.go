@@ -6,20 +6,7 @@ import (
 )
 
 func main() {
-	miner := &Miner{
-		Energy: 10,
-	}
-	miner.states = map[string]iState{
-		"working": &MinerWorking{
-			context:        miner,
-			requiredEnergy: 2,
-		},
-		"drinking": &MinerDrinking{
-			context:         miner,
-			recoveredEnergy: 1,
-		},
-	}
-	miner.currentState = "working"
+	miner := newMiner(10, 2, 1)
 
 	for i := 0; i < 100; i++ {
 		err := miner.Exec()

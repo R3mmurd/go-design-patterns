@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-// iState is the interface to define a state.
-type iState interface {
+// State is the interface to define a state.
+type State interface {
 	Enter()
 	Handle()
 	Exit()
@@ -13,7 +13,7 @@ type iState interface {
 
 // StateMachine is the context to execute states
 type StateMachine struct {
-	states       map[string]iState
+	states       map[string]State
 	currentState string
 	lastState    string
 }
